@@ -1,5 +1,5 @@
 #################################
-# Makefile for app_1		#
+# Makefile for app_0		#
 #################################
 
 ENTRYPOINT	= 0x00000000
@@ -24,7 +24,8 @@ DASMFLAGS	= -D -b binary -m arm
 # This Program
 APP		= $(APP_NAME).bin
 APPELF		= $(APP_NAME).elf
-OBJS		= $(OBJ-FILES-PATH)/app_startup.o $(OBJ-FILES-PATH)/main.o 
+OBJS		= $(OBJ-FILES-PATH)/app_startup.o $(OBJ-FILES-PATH)/main.o \
+		$(OBJ-FILES-PATH)/app_lib_funcs.o
 LIBS		= $(LIB-FILES-PATH)/syscall.lib
 DASMOUTPUT	= $(APP_NAME).bin.asm
 
@@ -59,6 +60,9 @@ $(APPELF) : $(OBJS) $(LIBS)
 $(OBJ-FILES-PATH)/main.o: main.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-$(OBJ-FILES-PATH)/app_startup.o: app_startup.S
+$(OBJ-FILES-PATH)/app_startup.o: ../app_startup.S
 	$(ASM) $(ASMFLAGS) -o $@ $<
+
+$(OBJ-FILES-PATH)/app_lib_funcs.o: ../app_lib_funcs.c
+	$(CC) $(CFLAGS) -o $@ $<
 

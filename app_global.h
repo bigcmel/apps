@@ -42,9 +42,12 @@ extern WORD serv_servm_get_empty_idx();
 // uart 服务部分
 #define SERV_UART_IDX 0x1
 
-#define SERV_UART_INIT 0x1        // 操作码定义
+#define SERV_UART_init 0x1        // 操作码定义
 #define SERV_UART_SendByte 0x2
 #define SERV_UART_SendString 0x3
+
+#define SERV_UART_init_PARA_NUM 0
+extern WORD serv_uart_init();
 
 #define SERV_UART_SendByte_PARA_NUM 1
 extern WORD serv_uart_SendByte(char ch);
@@ -52,6 +55,22 @@ extern WORD serv_uart_SendByte(char ch);
 #define SERV_UART_SendString_PARA_NUM 2
 extern WORD serv_uart_SendString(const char* str, unsigned int len);
 
+
+// appm 服务部分
+#define SERV_APPM_IDX 0x2
+
+#define SERV_APPM_init 0x1
+#define SERV_APPM_run 0x2
+#define SERV_APPM_register_app 0x3
+
+#define SERV_APPM_init_PARA_NUM 0
+extern WORD serv_appm_init();
+
+#define SERV_APPM_run_PARA_NUM 0
+extern WORD serv_appm_run();
+
+#define SERV_APPM_register_app_PARA_NUM 3
+extern WORD serv_appm_register_app(BYTE* app_name, BYTE* app_binary_base, WORD app_binary_length);
 
 
 

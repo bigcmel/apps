@@ -8,5 +8,4 @@ void main()
 
   serv_uart_SendString("Enter app_1.\n",13);
 
-
 }

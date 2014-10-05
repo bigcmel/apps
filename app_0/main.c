@@ -18,7 +18,9 @@ void main()
 
   serv_appm_init();
   serv_appm_register_app("app_1", 0x0, 4096);
-  serv_uart_SendString("setup app_1 in app_0.\n",21);
+  serv_uart_SendString("setup app_1 in app_0.\n",22);
   serv_appm_run();
+  serv_uart_SendString("app_1 finished.\n",16);
 
+  //  while(1){};
 }
